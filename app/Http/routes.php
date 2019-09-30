@@ -11,9 +11,16 @@
 |
 */
 
+use App\User;
+
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    $user= User::findOrFail(1);
+
+    echo $user->role['name'];
 });
+
+
 
 Route::auth();
 
