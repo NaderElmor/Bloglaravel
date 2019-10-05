@@ -17,11 +17,29 @@ Route::get('/', function () {
     //return view('welcome');
     $user= User::findOrFail(1);
 
-    echo $user->role['name'];
+   // echo $user->role['name'];
+
+    echo $user->name;
 });
 
+
+Route::get('/admin',function ()
+{
+    return view('Admin.index');
+
+});
+
+
+Route::get('/admin/users',function ()
+{
+    return view('Admin/users.index');
+
+});
 
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+
+Route::resource('/admin/users', 'AdminUsersController');
