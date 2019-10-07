@@ -15,6 +15,7 @@ Users
                 <th>Email</th>
                 <th>Role</th>
                 <th>Active</th>
+                <th>Photo</th>
                 <th>Created</th>
                 <th>Updated</th>
             </tr>
@@ -26,7 +27,7 @@ Users
 
                 <tr>
                     <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
+                    <td><a href="{{route('admin.users.edit',$user->id)}}">{{$user->name}}</a></td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role->name}}</td>
 
@@ -35,6 +36,11 @@ Users
                     @else
                         <td class="alert alert-danger">No</td>
                     @endif
+
+                    <td>
+                            <img height="55" width="55"  src="{{$user->photo? $user->photo->file :'http://placehold.it/50x50'}}"/>
+
+                    </td>
 
                     <td>{{$user->created_at->diffForHumans()}}</td>
                     <td>{{$user->updated_at->diffForHumans()}}</td>

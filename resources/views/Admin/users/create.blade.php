@@ -25,7 +25,7 @@
              </div>
 
             <div class="form-group">
-                 {!!  Form::select('role_id',['' => 'This user is :'] + $roles, 0 ,['class' => 'form-control'])!!}
+                 {!!  Form::select('role_id',['' => 'This user is :'] + $roles, ['class' => 'form-control'])!!}
              </div>
 
             <div class="form-group">

@@ -14,12 +14,8 @@
 use App\User;
 
 Route::get('/', function () {
-    //return view('welcome');
-    $user= User::findOrFail(1);
+    return view('welcome');
 
-   // echo $user->role['name'];
-
-    echo $user->name;
 });
 
 
@@ -30,11 +26,7 @@ Route::get('/admin',function ()
 });
 
 
-Route::get('/admin/users',function ()
-{
-    return view('Admin/users.index');
 
-});
 
 
 Route::auth();
