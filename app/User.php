@@ -47,4 +47,11 @@ class User extends Authenticatable
 
         }
     }
+
+    //each user has many posts
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
+
 }
