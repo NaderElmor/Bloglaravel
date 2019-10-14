@@ -5,7 +5,13 @@
 Users
 @endsection
 
+
+
 @section('content')
+    @if(Session::has('deletedUser'))
+        <p class="alert alert-danger">{{session('deletedUser')}}</p>
+    @endif
+
     <table class="table table-hover text-center">
 
         <thead>

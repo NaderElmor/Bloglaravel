@@ -6,8 +6,8 @@
 
 @section('content')
 
-    <div class="col-sm-9 col-md-offset-4" style="margin-bottom: 10px;">
-        <img class="img-thumbnail img-circle" src="{{$user->photo? $user->photo->file :'http://placehold.it/300x300'}}"/>
+    <div class="col-sm-9 col-md-offset-4" style="margin-bottom:10px;   ">
+        <img class=" img-circle" height="400" width="400"  src="{{$user->photo? $user->photo->file :'http://placehold.it/300x300'}}"/>
     </div>
     <div class="col-sm-8 col-md-offset-2" >
 
@@ -40,14 +40,28 @@
         {!!  Form::file('photo_id', ['class' => 'form-control'])!!}
     </div>
 
-
+<div class="col-md-offset-3"></div>
 
 
     <div class="form-group">
-        {!!  Form::submit('Update',['class' => 'btn btn-primary'])  !!}
+        {!!  Form::submit('Update',['class' => 'btn btn-primary col-sm-offset-2 col-sm-3  '])  !!}
     </div>
 
     {!! Form::close() !!}
+
+
+        {{--delete form--}}
+        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminUsersController@destroy', $user->id]]) !!}
+
+
+                 <div class="form-group">
+                     {!!  Form::submit('Delete',['class' => 'btn btn-danger col-sm-offset-2 col-sm-3 '])  !!}
+                 </div>
+
+            {!! Form::close() !!}
+
+
+
 
     @include('includes.form-errors')
 
