@@ -8,8 +8,8 @@
 
 
 @section('content')
-    @if(Session::has('deletedUser'))
-        <p class="alert alert-danger">{{session('deletedUser')}}</p>
+    @if(Session::has('deletedPost'))
+        <p class="alert alert-danger">{{session('deletedPost')}}</p>
     @endif
 
     <table class="table table-hover">
@@ -35,8 +35,8 @@
                     <td>{{$post->id}}</td>
                     <td><a href="{{route('admin.posts.edit',$post->id)}}">{{$post->title}}</a></td>
                     <td>{{$post->body}}</td>
-                    <td>{{$post->user->name}}</td>
-                    <td>{{$post->category->name}}</td>
+                    <td>{{$post->user['name'] }}</td>
+                    <td>{{$post->category['name'] }}</td>
 
 
 
