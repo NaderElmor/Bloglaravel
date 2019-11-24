@@ -4,7 +4,12 @@
     Create Posts
 @endsection
 
+
 @section('content')
+
+    @include('includes.tiny-editor')
+
+
     {!! Form::open(['action' => 'AdminPostsController@store','files' => true]) !!}
 
     <div class="form-group">
@@ -18,7 +23,7 @@
 
 
     <div class="form-group">
-        {!!  Form::textarea('body', null ,['placeholder' => 'Type the content ...', 'class' => 'form-control', 'rows' => 3])!!}
+        {!!  Form::textarea('body', null ,['placeholder' => 'Type the content ...', 'class' => 'form-control', 'rows' => 3,'id'=>'mytextarea'])!!}
     </div>
 
     {{--<div class="form-group">--}}

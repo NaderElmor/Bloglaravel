@@ -33,7 +33,7 @@ Users
 
                 <tr>
                     <td>{{$user->id}}</td>
-                    <td><a href="{{route('admin.users.edit',$user->id)}}">{{$user->name}}</a></td>
+                    <td><a href="{{route('users.edit',$user->id)}}">{{$user->name}}</a></td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role->name}}</td>
 

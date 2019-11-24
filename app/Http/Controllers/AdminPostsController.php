@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Comment;
+use App\CommentReply;
 use App\Http\Requests\PostCreateRequest;
 use App\Http\Requests\PostEditRequest;
 use App\Photo;
@@ -23,7 +25,7 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(2);
         return view('Admin.posts.index',compact('posts'));
     }
 
@@ -34,7 +36,7 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-        $categories = Category::lists('name','id')->all();
+        $categories = Category::pluck('name','id')->all();
         return view('Admin.posts.create', compact('categories'));
     }
 
@@ -88,9 +90,9 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-        $users  = User::lists('name','id')->all();
+        $users  = User::pluck('name','id')->all();
         $post  = Post::findOrFail($id);
-        $categories = Category::lists('name','id')->all();
+        $categories = Category::pluck('name','id')->all();
 
 
         return view('Admin.posts.edit',compact('post','categories','users'));
@@ -153,5 +155,14 @@ class AdminPostsController extends Controller
         Session::flash('deletedPost','The post has been deleted');
 
         return redirect('/admin/posts');
+    }
+
+    public function post($id)
+    {
+       $post = Post::FindOrFail($id);
+       $comments = Comment::all();
+       $c_replies = CommentReply::all();
+       return view('post',compact('post','comments','c_replies'));
+
     }
 }

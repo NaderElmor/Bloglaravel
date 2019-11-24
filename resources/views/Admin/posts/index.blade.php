@@ -22,6 +22,8 @@
             <th>Author</th>
             <th>Category</th>
             <th>Photo</th>
+            <th>Post</th>
+            <th>Comments</th>
             <th>Created</th>
             <th>Updated</th>
         </tr>
@@ -33,8 +35,8 @@
 
                 <tr>
                     <td>{{$post->id}}</td>
-                    <td><a href="{{route('admin.posts.edit',$post->id)}}">{{$post->title}}</a></td>
-                    <td>{{$post->body}}</td>
+                    <td><a href="{{route('posts.edit',$post->id)}}">{{$post->title}}</a></td>
+                    <td>{{ str_limit($post->body,20)}}</td>
                     <td>{{$post->user['name'] }}</td>
                     <td>{{$post->category['name'] ? $post->category['name'] : 'No category'  }}</td>
 
@@ -45,6 +47,9 @@
 
                     </td>
 
+
+                    <td><a class="btn btn-info" href="{{route('posts.index',$post->id)}}"> View Post <i class="fa fa-eye"></i></a></td>
+                    <td><a class="btn btn-success" href="{{route('comments.show',$post->id)}}"> View Comments <i class="fa fa-eye"></i></a></td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>
                 </tr>
@@ -54,6 +59,13 @@
         </tbody>
 
     </table>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+            {{$posts->render()}}
+
+        </div>
+    </div>
 @endsection
 
 

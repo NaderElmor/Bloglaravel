@@ -46,8 +46,21 @@ class AdminMediasController extends Controller
 
         return redirect('admin/media');
 
+    }
+
+    //for bulk delete
+    public function deleteMedia(Request $request)
+    {
+        $photos = Photo::findOrFail($request->chBoxArray);
+
+        foreach ($photos as $photo)
+        {
+            $photo->delete();
+        }
+        return redirect()->back();
 
     }
+
 
 
 }

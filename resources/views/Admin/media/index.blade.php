@@ -13,44 +13,92 @@
         <p class="alert alert-danger">{{session('deletedUser')}}</p>
     @endif
 
-    <table class="table table-hover text-center">
 
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Photo</th>
-            <th>Created</th>
-            <th>Delete</th>
-        </tr>
-        </thead>
+    <form action="/delete/media" method="post" class="form-inline">
+        <div class="form-group">
+            <select name="chBoxArray" class="form-control">
 
-        <tbody>
-        @if($photos)
-            @foreach($photos as $photo)
+                <option value="delete">Delete</option>
 
-                <tr>
-                    <td>{{$photo->id}}</td>
-                    <td><img height="50" src="{{$photo->file}}"></td>
-                    <td>{{$photo->created_at->diffForHumans()}}</td>
+            </select>
+        </div>
 
-                    <td>
-                        {{--delete form--}}
-                        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminMediasController@destroy', $photo->id]]) !!}
+        <div class="form-group">
+            <input type="submit" class="btn-primary">
+        </div>
+
+        <table class="table table-hover">
+
+            <thead>
+            <tr>
+                <th><input type="checkbox" id="options"></th>
+                <th>ID</th>
+                <th>Photo</th>
+                <th>Created</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @if($photos)
+                @foreach($photos as $photo)
+
+                    <tr>
+                        <td><input class="checkBoxes" type="checkbox" name="chBoxArray[]" value="{{$photo->id}}"></td>
+                        <td>{{$photo->id}}</td>
+                        <td><img height="50" src="{{$photo->file}}"></td>
+                        <td>{{$photo->created_at->diffForHumans()}}</td>
+
+                        <td>
+                            {{--delete form--}}
+                            {!! Form::open(['method' => 'DELETE', 'action' => ['AdminMediasController@destroy', $photo->id]]) !!}
 
 
-                        <div class="form-group">
-                            {!!  Form::submit('Delete',['class' => 'btn btn-danger col-sm-offset-2 col-sm-3 '])  !!}
-                        </div>
+                            <div class="form-group">
+                                {!!  Form::submit('Delete',['class' => 'btn btn-danger  '])  !!}
+                            </div>
 
-                        {!! Form::close() !!}
+                            {!! Form::close() !!}
 
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
 
-            @endforeach()
-        @endif()
-        </tbody>
+                @endforeach()
+            @endif()
+            </tbody>
 
-    </table>
+        </table>
+    </form>
+
+
 @endsection
+
+@section('scripts')
+
+    this is for multible/bulk selection
+    <script>
+        $(document).ready(function () {
+
+            $('#options').on('click',function () {
+
+                if(this.checked)
+                {
+                    $('.checkBoxes').each(function () {
+
+                        this.checked = true;
+                    });
+                }
+                else
+                {
+                    $('.checkBoxes').each(function () {
+
+                        this.checked = false;
+                    });
+                }
+            });
+
+        });
+    </script>
+
+@stop

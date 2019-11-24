@@ -35,3 +35,11 @@
 .toppad
 {margin-top:20px;
 }
+
+
+.comment-reply{
+
+    display: none;
+    width: 77%;
+    margin-left: 5px;
+}

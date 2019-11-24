@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+
+
     protected $fillable = ['category_id','photo_id','user_id','title','body'];
 
 
@@ -16,7 +18,7 @@ class Post extends Model
     }
 
      //each post belongs to a pic
-    public function Photo()
+    public function photo()
     {
         return $this->belongsTo('App\Photo');
     }
@@ -25,6 +27,12 @@ class Post extends Model
     public function Category()
     {
         return $this->belongsTo('App\Category');
+    }
+
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 
 
