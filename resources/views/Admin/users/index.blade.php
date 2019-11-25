@@ -44,8 +44,9 @@ Users
                     @endif
 
                     <td>
-                            <img height="55" width="55"  src="{{$user->photo? $user->photo->file :'http://placehold.it/50x50'}}"/>
-
+                            {{--<img height="55" width="55"  src="{{$user->photo? $user->photo->file :'http://placehold.it/50x50'}}"/>--}}
+                            <img height="55" width="55"  src="{{$user->photo? URL::to('/').$user->photo['file']:'http://placehold.it/50x50'}}"/>
+                        {{--<img src="{{ URL::to('/images/' . $item->Photo) }}"--}}
                     </td>
 
                     <td>{{$user->created_at->diffForHumans()}}</td>

@@ -46,7 +46,7 @@
                     <tr>
                         <td><input class="checkBoxes" type="checkbox" name="chBoxArray[]" value="{{$photo->id}}"></td>
                         <td>{{$photo->id}}</td>
-                        <td><img height="50" src="{{$photo->file}}"></td>
+                        <td><img height="50" src="{{URL::to('/').$photo->file}}"></td>
                         <td>{{$photo->created_at->diffForHumans()}}</td>
 
                         <td>

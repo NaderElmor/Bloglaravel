@@ -43,7 +43,7 @@
 
 
                     <td>
-                        <img height="55" width="55"  src="{{$post->photo? $post->photo->file :'http://placehold.it/50x50'}}"/>
+                        <img height="55" width="55"  src="{{$post->photo? URL::to('/').$post->photo->file :'http://placehold.it/50x50'}}"/>
 
                     </td>
 
