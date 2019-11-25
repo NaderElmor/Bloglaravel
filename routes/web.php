@@ -15,7 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/admin',function ()
+{
+    return view('Admin.index');
+
+});
+
+Route::get('/post/{id}',['as' => 'home.post','uses' => 'AdminPostsController@post']);
+
+
 Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::group(['middleware' => 'admin'], function ()
@@ -42,3 +55,11 @@ Route::group(['middleware' => 'admin'], function ()
 
 
 });
+
+//middleware for logged user only
+Route::group(['middleware' => 'auth'], function ()
+{
+    Route::post('comment/reply','CommentRepliesController@store');
+
+});
+

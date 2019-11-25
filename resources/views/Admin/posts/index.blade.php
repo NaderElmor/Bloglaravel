@@ -47,8 +47,7 @@
 
                     </td>
 
-
-                    <td><a class="btn btn-info" href="{{route('posts.index',$post->id)}}"> View Post <i class="fa fa-eye"></i></a></td>
+                    <td><a class="btn btn-info" href="{{route('home.post',$post->id)}}"> View Post <i class="fa fa-eye"></i></a></td>
                     <td><a class="btn btn-success" href="{{route('comments.show',$post->id)}}"> View Comments <i class="fa fa-eye"></i></a></td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>

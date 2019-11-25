@@ -33,7 +33,7 @@
                     <td>{{$comment->body}}</td>
                     <td>{{$comment->author}}</td>
                     <td><a class="btn btn-info" href="{{route('home.post',$comment->post->id)}}"> View Post <i class="fa fa-eye"></i></a></td>
-                    <td><a class="btn btn-info" href="{{route('admin.comment.replies.show',$comment->id)}}"> View Replies <i class="fa fa-eye"></i></a></td>
+                    <td><a class="btn btn-info" href="{{route('replies.show',$comment->id)}}"> View Replies <i class="fa fa-eye"></i></a></td>
                     <td>{{$comment->created_at->diffForHumans()}}</td>
 
                     <td>

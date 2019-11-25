@@ -26,13 +26,6 @@ Route::get('/admin',function ()
 });
 
 
-Route::get('/test',function ()
-{
-
-
-
-});
-
 
 Route::get('/post/{id}',['as' => 'home.post','uses' => 'AdminPostsController@post']);
 
