@@ -10,7 +10,6 @@ class Photo extends Model
 
     protected  $imagesFolder ='/images/';
 
-
     public function getFileAttribute($photo)
     {
         return $this->imagesFolder.$photo;

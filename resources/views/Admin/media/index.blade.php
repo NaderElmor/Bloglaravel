@@ -14,7 +14,7 @@
     @endif
 
 
-    <form action="/delete/media" method="post" class="form-inline">
+    <form action="{{ action('AdminMediasController@deleteMedia') }}" method="post" class="form-inline">
         <div class="form-group">
             <select name="chBoxArray" class="form-control">
 

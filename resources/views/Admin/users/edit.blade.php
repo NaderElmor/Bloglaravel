@@ -6,15 +6,15 @@
 
 @section('content')
 
-    <div class="col-sm-9 col-md-offset-4" style="margin-bottom:10px;   ">
-        <img class=" img-circle" height="400" width="400"  src="{{$user->photo? $user->photo->file :'http://placehold.it/300x300'}}"/>
-    </div>
+ 
     <div class="col-sm-8 col-md-offset-2" >
 
 
         {{--null is to let laravel fill out the form from the database automatically--}}
     {!! Form::model($user,['method' => 'PUT', 'action' => ['AdminUsersController@update', $user->id],'files' => true]) !!}
-
+    <div class="col-sm-9 col-md-offset-3" style="margin-bottom:10px;   ">
+    <img class=" thumbnail" height="400" width="400"  src="{{$user->photo? URL::to('/').$user->photo['file']:'http://placehold.it/400x400'}}"/>
+    </div>
     <div class="form-group">
         {!!  Form::text('name', null ,['placeholder' => 'UserName', 'class' => 'form-control'])!!}
     </div>
